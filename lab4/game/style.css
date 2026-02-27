@@ -1,0 +1,72 @@
+:root {
+    --water: #020b1a;
+    --accent: #00f2ff;
+    --ui-bg: rgba(10, 25, 41, 0.9);
+}
+
+body {
+    margin: 0; background: var(--water); color: #fff;
+    font-family: 'Segoe UI', sans-serif; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; height: 100vh;
+}
+
+header {
+    width: 100%; padding: 20px; display: flex;
+    justify-content: space-around; align-items: center;
+    background: linear-gradient(to bottom, #0a1929, transparent);
+}
+
+.game-container { display: flex; gap: 40px; margin-top: 20px; perspective: 1200px; }
+
+.board {
+    display: grid; grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 40px); gap: 2px;
+    padding: 10px; background: var(--ui-bg); border: 2px solid #1a3a5a;
+    border-radius: 4px; transform: rotateX(10deg);
+}
+
+.blur { filter: grayscale(1) brightness(0.5); pointer-events: none; }
+
+.cell {
+    width: 40px; height: 40px; background: rgba(0, 100, 200, 0.1);
+    border: 1px solid rgba(0, 242, 255, 0.1); cursor: pointer;
+    position: relative; transition: 0.2s;
+}
+
+.cell:hover { background: rgba(0, 242, 255, 0.3); }
+
+.cell.ship { background: #3a4a5e; box-shadow: inset 0 0 15px var(--accent); }
+.cell.hit { background: rgba(255, 69, 0, 0.6); box-shadow: inset 0 0 15px #ff4500; }
+.cell.miss { background: rgba(255, 255, 255, 0.1); }
+.cell.miss::after {
+    content: ''; position: absolute; width: 6px; height: 6px;
+    background: #fff; border-radius: 50%; top: 17px; left: 17px; opacity: 0.4;
+}
+
+.controls button {
+    background: transparent; border: 1px solid var(--accent);
+    color: var(--accent); padding: 8px 15px; cursor: pointer; margin: 0 5px;
+}
+
+.controls button:disabled { border-color: #444; color: #444; cursor: not-allowed; }
+
+.status-panel {
+    position: fixed; bottom: 30px; background: var(--ui-bg);
+    padding: 15px 50px; border-top: 3px solid var(--accent);
+}
+
+.explosion {
+    position: absolute; width: 100%; height: 100%;
+    background: radial-gradient(circle, #fff, #ffcc00, transparent);
+    animation: boom 0.4s ease-out forwards;
+}
+
+@keyframes boom {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+.waves {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, #05162a 0%, #000 100%); z-index: -1;
+}

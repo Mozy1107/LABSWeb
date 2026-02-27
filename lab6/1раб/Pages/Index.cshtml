@@ -1,0 +1,134 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Главная";
+}
+
+<div class="hero-section">
+    <div class="container-lg">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <i class="fas fa-car text-gradient"></i>
+                Добро пожаловать в <span class="text-gradient">ProCar</span>
+            </h1>
+            <p class="hero-subtitle">Современная платформа для управления каталогом автомобилей и коммуникациями</p>
+            <p class="hero-meta">Разработано: Белов Даниил | 2026</p>
+            <div class="hero-buttons">
+                <a href="/Movies" class="btn btn-lg btn-primary-gradient">
+                    <i class="fas fa-car me-2"></i>Управление автомобилями
+                </a>
+                <a href="/Chat" class="btn btn-lg btn-success-gradient">
+                    <i class="fas fa-comments me-2"></i>Открыть Чат
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="features-section">
+    <div class="container-lg">
+        <h2 class="section-title">Основные возможности</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h4>Управление автомобилями</h4>
+                        <p>Полноценная система управления базой данных автомобилей с поиском, редактированием, фильтрацией по маркам и ценам.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h4>Чат в Реальном Времени</h4>
+                    <p>Мощная система обмена сообщениями с использованием SignalR для мгновенной доставки и групповых чатов.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>Современный Стек</h4>
+                    <p>Построено на ASP.NET Core 10, Entity Framework, SignalR и Bootstrap 5 для максимальной производительности.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="info-section">
+    <div class="container-lg">
+        <div class="info-card">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3>О Проекте</h3>
+                    <p>ProHub — это инновационная веб-платформа, созданная для демонстрации возможностей современных web-технологий. Проект включает в себя полнофункциональную систему управления медиа-контентом и интегрированный чат с поддержкой реального времени.</p>
+                    <div class="tech-stack">
+                        <h5>Технологический стек:</h5>
+                        <ul>
+                            <li><i class="fas fa-check text-success me-2"></i> ASP.NET Core 10</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Entity Framework Core 9</li>
+                            <li><i class="fas fa-check text-success me-2"></i> SQL Database (SQLite)</li>
+                            <li><i class="fas fa-check text-success me-2"></i> SignalR для чатов</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-box-right">
+                        <h5><i class="fas fa-code-branch me-2"></i>Функциональность</h5>
+                        <div class="feature-list">
+                            <p><span class="badge bg-primary">CRUD</span> операции с автомобилями</p>
+                            <p><span class="badge bg-success">WebSocket</span> чаты в реальном времени</p>
+                            <p><span class="badge bg-info">Responsive</span> дизайн для всех устройств</p>
+                            <p><span class="badge bg-warning">Валидация</span> данных на клиенте и сервере</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Построено на ASP.NET Core 10, Entity Framework и SQL, обеспечивает надежность, безопасность и высокую производительность.</p>
+                <a href="https://docs.microsoft.com/aspnet/core" target="_blank" class="btn btn-info w-100">Документация</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 mb-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-info-circle"></i> О Проекте</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Основные Возможности:</h6>
+                        <ul style="list-style: none; padding: 0;">
+                            <li><i class="fas fa-check text-success"></i> Управление фильмами и контентом</li>
+                            <li><i class="fas fa-check text-success"></i> Система чатов в реальном времени</li>
+                            <li><i class="fas fa-check text-success"></i> Адаптивный и современный интерфейс</li>
+                            <li><i class="fas fa-check text-success"></i> Высокая производительность</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Технологический Стек:</h6>
+                        <ul style="list-style: none; padding: 0;">
+                            <li><i class="fas fa-atom"></i> ASP.NET Core 10</li>
+                            <li><i class="fas fa-database"></i> Entity Framework Core</li>
+                            <li><i class="fas fa-server"></i> SQL Database</li>
+                            <li><i class="fas fa-code"></i> SignalR & Bootstrap 5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+@page
+@model Rabota2.Pages.Inzhenery.EditModel
+
+@{
+    ViewData["Title"] = "Редактировать специалиста по продажам";
+}
+
+<h1>Редактировать специалиста по продажам</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Inzhener.Id" />
+            <div class="form-group mb-3">
+                <label asp-for="Inzhener.Name" class="form-label">Имя специалиста</label>
+                <input asp-for="Inzhener.Name" class="form-control" />
+                <span asp-validation-for="Inzhener.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Inzhener.Kvalifikaciya" class="form-label">Уровень квалификации</label>
+                <input asp-for="Inzhener.Kvalifikaciya" class="form-control" />
+                <span asp-validation-for="Inzhener.Kvalifikaciya" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Inzhener.Podrazdelenie" class="form-label">Отдел продаж</label>
+                <select asp-for="Inzhener.Podrazdelenie" class="form-select">
+                    <option value="Отдел продаж легковых автомобилей">Отдел продаж легковых автомобилей</option>
+                    <option value="Отдел продаж коммерческого транспорта">Отдел продаж коммерческого транспорта</option>
+                    <option value="Отдел обслуживания клиентов">Отдел обслуживания клиентов</option>
+                    <option value="Отдел послепродажного обслуживания">Отдел послепродажного обслуживания</option>
+                </select>
+                <span asp-validation-for="Inzhener.Podrazdelenie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-success" />
+                <a asp-page="./Index" class="btn btn-secondary">Назад к списку</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

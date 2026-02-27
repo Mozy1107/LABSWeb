@@ -1,0 +1,68 @@
+@page
+@model RazorPagesApp.Pages.Movies.IndexModel
+
+@{
+    ViewData["Title"] = "Каталог медиатеки";
+}
+
+<div class="main-card shadow-sm p-4" style="background: white; border-radius: 16px; border: 1px solid #e2e8f0;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h3 fw-bold mb-0" style="color: #0f172a;">Управление контентом</h1>
+            <p class="text-muted small mb-0">Список доступных фильмов и фильтрация базы данных</p>
+        </div>
+        <a asp-page="Create" class="btn btn-primary" style="border-radius: 8px; font-weight: 500;">
+            + Добавить фильм
+        </a>
+    </div>
+
+    <form class="row g-3 mb-4 p-3 shadow-sm" style="background: #f8fafc; border-radius: 12px; margin: 0;">
+        <div class="col-md-4">
+            <label class="form-label small fw-bold text-muted">Жанр</label>
+            <select asp-for="MovieGenre" asp-items="Model.Genres" class="form-select">
+                <option value="">Все жанры</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label small fw-bold text-muted">Поиск по названию</label>
+            <input type="text" asp-for="SearchString" class="form-control" placeholder="Начните вводить..." />
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-dark w-100" style="border-radius: 8px;">Найти</button>
+        </div>
+    </form>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th style="border-top-left-radius: 10px;">@Html.DisplayNameFor(model => model.Movie[0].Title)</th>
+                    <th>@Html.DisplayNameFor(model => model.Movie[0].ReleaseDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.Movie[0].Genre)</th>
+                    <th>@Html.DisplayNameFor(model => model.Movie[0].Price)</th>
+                    <th>@Html.DisplayNameFor(model => model.Movie[0].Rating)</th>
+                    <th style="border-top-right-radius: 10px;">Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Movie)
+                {
+                    <tr>
+                        <td class="fw-bold text-dark">@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td class="text-muted">@Html.DisplayFor(modelItem => item.ReleaseDate)</td>
+                        <td><span class="badge bg-light text-primary">@Html.DisplayFor(modelItem => item.Genre)</span></td>
+                        <td><strong>@Html.DisplayFor(modelItem => item.Price)</strong></td>
+                        <td><span class="badge bg-secondary">@Html.DisplayFor(modelItem => item.Rating)</span></td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-outline-primary">Изм.</a>
+                                <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-outline-secondary">Инфо</a>
+                                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Уд.</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

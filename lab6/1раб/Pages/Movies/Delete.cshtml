@@ -1,0 +1,187 @@
+@page
+@model Rabota1.Pages.Movies.DeleteModel
+
+@{
+    ViewData["Title"] = "Удалить автомобиль";
+}
+
+<style>
+    .delete-hero {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        padding: 2.5rem 0;
+        margin-bottom: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
+        text-align: center;
+    }
+
+    .delete-hero h1 {
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .delete-hero p {
+        font-size: 1rem;
+        opacity: 0.95;
+    }
+
+    .warning-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #fff5f5;
+        border: 2px solid #f5576c;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(245, 87, 108, 0.15);
+        margin-bottom: 2rem;
+    }
+
+    .warning-icon {
+        font-size: 2.5rem;
+        color: #f5576c;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .warning-text {
+        color: #721c24;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .delete-info {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    .info-field {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .info-field:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .info-label {
+        font-weight: 600;
+        color: #666;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+
+    .info-value {
+        color: #333;
+        font-size: 1rem;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .btn-danger-gradient {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border: none;
+        color: white;
+        padding: 0.85rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-danger-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+    }
+
+    .btn-cancel {
+        background: white;
+        border: 2px solid #ddd;
+        color: #666;
+        padding: 0.85rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-cancel:hover {
+        background: #f8f9fa;
+        border-color: #667eea;
+        color: #667eea;
+    }
+</style>
+
+<div class="delete-hero">
+    <div class="container">
+        <h1><i class="fas fa-trash-alt" style="margin-right: 0.5rem;"></i>Удалить автомобиль</h1>
+        <p>Это действие невозможно отменить</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="warning-container">
+        <div class="warning-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <div class="warning-text">
+            Вы действительно хотите удалить этот автомобиль?
+        </div>
+
+        <div class="delete-info">
+            <div class="info-field">
+                <span class="info-label"><i class="fas fa-car" style="margin-right: 0.5rem;"></i>Марка</span>
+                <div class="info-value">@Model.Car.Brand</div>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label"><i class="fas fa-cube" style="margin-right: 0.5rem;"></i>Модель</span>
+                <div class="info-value">@Model.Car.Model</div>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label"><i class="fas fa-calendar" style="margin-right: 0.5rem;"></i>Год выпуска</span>
+                <div class="info-value">@Model.Car.Year</div>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label"><i class="fas fa-tag" style="margin-right: 0.5rem;"></i>Тип</span>
+                <div class="info-value">@Model.Car.CarType</div>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label"><i class="fas fa-dollar-sign" style="margin-right: 0.5rem;"></i>Цена</span>
+                <div class="info-value">₽@Model.Car.Price.ToString("F0")</div>
+            </div>
+        </div>
+
+        <form method="post" style="display: flex; gap: 1rem; justify-content: center;">
+            <input type="hidden" asp-for="Car.Id" />
+            <button type="submit" class="btn-danger-gradient">
+                <i class="fas fa-trash-alt" style="margin-right: 0.5rem;"></i>Удалить автомобиль
+            </button>
+            <a asp-page="./Index" class="btn-cancel">
+                <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>Отмена
+            </a>
+        </form>
+    </div>
+</div>

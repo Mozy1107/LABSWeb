@@ -1,0 +1,162 @@
+/* Светлый и современный дизайн */
+:root {
+    --bg-color: #f5f7fa;
+    --card-bg: #ffffff;
+    --text-main: #2c3e50;
+    --text-muted: #7f8c8d;
+    --accent: #3498db;
+    --accent-hover: #2980b9;
+    --border-radius: 12px;
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Шапка (Header) */
+header, .navbar {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    border-bottom: 3px solid #2980b9;
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow);
+}
+
+header a, .navbar-brand, .nav-link {
+    color: #ffffff !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header a:hover, .nav-link:hover {
+    color: #ecf0f1 !important;
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+/* Контент и карточки */
+.container, main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid #ecf0f1;
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(52, 152, 219, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Кнопки */
+button, .btn, input[type="submit"] {
+    background-color: #3498db !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 25px !important;
+    border-radius: 6px !important;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+button:hover, .btn:hover {
+    background-color: #2980b9 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.btn-primary {
+    background-color: #3498db !important;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9 !important;
+}
+
+.btn-success {
+    background-color: #27ae60 !important;
+}
+
+.btn-success:hover {
+    background-color: #229954 !important;
+}
+
+.btn-warning {
+    background-color: #f39c12 !important;
+    color: white !important;
+}
+
+.btn-warning:hover {
+    background-color: #d68910 !important;
+}
+
+.btn-danger {
+    background-color: #e74c3c !important;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b !important;
+}
+
+.btn-info {
+    background-color: #16a085 !important;
+}
+
+.btn-info:hover {
+    background-color: #138d75 !important;
+}
+
+/* Подвал */
+footer {
+    background-color: #34495e;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    border-top: 3px solid #3498db;
+}
+    font-size: 0.9rem;
+}

@@ -1,0 +1,9 @@
+ИНСТРУКЦИЯ ПО РАБОТЕ С ПРОЕКТОМ
+Разработчик: Даниил Белов
+
+Основные операции через консоль:
+1. Запуск: dotnet run
+2. Сборка: dotnet build
+3. Создание миграции БД: dotnet ef migrations add InitialCreate
+4. Обновление БД: dotnet ef database update
+5. Очистка: dotnet clean

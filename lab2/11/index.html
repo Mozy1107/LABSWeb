@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 11 - Font Awesome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 300px;
+        }
+        
+        ul li {
+            padding: 12px 25px;
+            margin: 10px 0;
+            background: #ffcc00;
+            color: #333;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        ul li:hover {
+            transform: scale(1.05);
+            background: #ffdb4d;
+        }
+        
+        ul li i {
+            margin-right: 15px;
+            color: #000000;
+            width: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Задание 11 - Иконки Font Awesome</h1>
+    
+    <ul>
+        <li><i class="fas fa-home"></i>Главная</li>
+        <li><i class="fas fa-user"></i>Профиль</li>
+        <li><i class="fas fa-envelope"></i>Сообщения</li>
+        <li><i class="fas fa-cog"></i>Настройки</li>
+        <li><i class="fas fa-sign-out-alt"></i>Выход</li>
+    </ul>
+</body>
+</html>

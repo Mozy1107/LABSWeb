@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная работа</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+
+        .main-row {
+            display: flex;          
+            align-items: center;    
+            gap: 30px;              
+            margin-top: 10px;
+        }
+
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .btn:hover { background-color: #0056b3; }
+
+        
+        .left-col {
+            display: flex;
+            flex-direction: column; 
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="font-size: 48px;">Привет мир</h1>
+
+    <p>
+        <em>Давно выяснено</em>, что при оценке дизайна и композиции читаемый текст <s>мешает сосредоточиться</s>.</u>
+    </p>
+
+    <p>
+        <strong>Lorem Ipsum</strong> используют потому,<br>
+        что тот обеспечивает более или менее стандартное <u>заполнение шаблона</u>, а также реальное<br>
+        распределение букв и пробелов в абзацах, которое не получается при простой дубликации.
+    </p>
+
+    <strong style="font-size: 22px;">Список покупок:</strong>
+    <ul>
+        <li>Хлеб</li><li>Молоко</li><li>Картошка</li>
+    </ul>
+
+    <strong style="font-size: 22px;">Инструкция:</strong>
+    <ol>
+        <li>Вставить батарейки в пульт</li>
+        <li>Нажать кнопку ВКЛ</li>
+    </ol>
+
+    <dl>
+        <dt>Молоко</dt>
+        <dd>1 литр</dd>
+        <dt>Картошка</dt>
+        <dd>2 кг</dd>
+    </dl>
+
+    <hr>
+
+    <div class="main-row">
+        
+        <div class="left-col">
+            <a href="about.html" class="btn">О нас</a>
+            <a href="files/archive.zip" download class="btn">Скачать архив</a>
+            <img src="img/picture.jpg" alt="Картинка" width="300">
+        </div>
+
+        <div class="svg-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" height="400" width="450">
+                <path d="M100 350 250 50m0 0 150 300" stroke="red" stroke-width="3" fill="none" />
+                <path d="M175 200h150" stroke="green" stroke-width="3" fill="none" />
+                <path d="M100 350q150-300 300 0" stroke="#00f" stroke-width="5" fill="none" />
+                <g stroke="#000" stroke-width="3">
+                    <circle cx="100" cy="350" r="3" /><circle cx="250" cy="50" r="3" /><circle cx="400" cy="350" r="3" />
+                </g>
+                <g font-size="30" font-family="sans-serif" text-anchor="middle">
+                    <text x="100" y="350" dx="-30">A</text>
+                    <text x="250" y="50" dy="-10">B</text>
+                    <text x="400" y="350" dx="30">C</text>
+                </g>
+            </svg>
+        </div>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <h3>Дополнительные фигуры</h3>
+    <div>
+        <svg width="100" height="100">
+            <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+        </svg>
+        <svg width="150" height="100">
+            <rect width="150" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+        </svg>
+        <svg width="100" height="100">
+            <polygon points="50,5 20,99 95,39 5,39 80,99" style="fill:lime;stroke:purple;stroke-width:1" />
+        </svg>
+        <svg width="150" height="60">
+            <text x="10" y="40" fill="red" font-family="Verdana" font-size="24">SVG Text</text>
+        </svg>
+        <svg width="100" height="100">
+            <path d="M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80" stroke="black" fill="transparent"/>
+        </svg>
+        <svg width="100" height="100">
+            <circle cx="30" cy="30" r="30" fill="red" fill-opacity="0.7" />
+            <circle cx="70" cy="30" r="30" fill="blue" fill-opacity="0.7" />
+            <circle cx="50" cy="70" r="30" fill="green" fill-opacity="0.7" />
+        </svg>
+    </div>
+
+    <hr>
+
+    <<h3>Медиа</h3>
+    
+    <video width="400" controls poster="media/poster.jpg">
+        <source src="media/video.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+
+    <br><br>
+
+    <audio controls>
+        <source src="media/audio.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+
+    <hr>
+
+</body>
+</html>

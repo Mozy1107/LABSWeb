@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* Coca Cola - строчные буквы */
+.coca-cola {
+    list-style-type: lower-alpha;
+}
+
+/* Pepsi - квадратные маркеры */
+.pepsi {
+    list-style-type: square;
+}
+
+/* Здоровье - армянские цифры */
+.health {
+    list-style-type: armenian;
+}
+
+/* Web-developer - без маркеров и отступов */
+.developer {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

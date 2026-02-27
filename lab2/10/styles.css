@@ -1,0 +1,11 @@
+.myTitle {
+    /* Название нового шрифта */
+    font-family: 'Press Start 2P', cursive;
+    /* Уменьшил до 32px, так как этот шрифт шире обычного */
+    font-size: 32px;
+    font-weight: 400;
+    color: #3f3f3f;
+    /* Добавляем эффект "ступенчатой" тени как в Minecraft */
+    text-shadow: 4px 4px 0px #bababa;
+    text-transform: uppercase;
+}

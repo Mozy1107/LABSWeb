@@ -1,0 +1,80 @@
+@page
+@model ChatModel
+@{
+    ViewData["Title"] = "Чат";
+}
+
+<div class="chat-hero">
+    <div class="container-lg">
+        <h1><i class="fas fa-comments-alt me-2"></i>Чат в Реальном Времени</h1>
+        <p class="text-subtitle">Откройте несколько вкладок для полноценного тестирования системы</p>
+    </div>
+</div>
+
+<div class="container-lg py-5">
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-status">
+                        <span class="status-indicator" id="statusIndicator"></span>
+                        <span id="status">Отключен</span>
+                    </div>
+                </div>
+                <div class="chat-messages" id="messagesList">
+                    <div class="message-placeholder">
+                        <p>Начните общаться</p>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <div class="input-group">
+                        <input type="text" id="userInput" placeholder="Ваше имя..." class="form-control" value="Пользователь" />
+                        <input type="text" id="messageInput" placeholder="Напишите сообщение..." class="form-control" />
+                        <button id="sendButton" class="btn btn-primary-gradient">
+                            <i class="fas fa-paper-plane me-2"></i>Отправить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="info-container">
+                <div class="info-card-header">
+                    <i class="fas fa-info-circle me-2"></i>Информация Системы
+                </div>
+                <div class="info-card-body">
+                    <div class="info-item">
+                        <h6>Статус Соединения</h6>
+                        <p class="info-value">
+                            <span class="badge bg-danger" id="statusBadge">Не подключено</span>
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="info-item">
+                        <h6>Технология</h6>
+                        <p class="info-value">SignalR 7.0.0</p>
+                    </div>
+                    <div class="info-item">
+                        <h6>Протокол</h6>
+                        <p class="info-value">WebSocket</p>
+                    </div>
+                    <hr>
+                    <div class="info-item">
+                        <h6><i class="fas fa-star text-warning me-2"></i>Функции</h6>
+                        <ul class="feature-list">
+                            <li>Мгновенная доставка</li>
+                            <li>Уведомления онлайн</li>
+                            <li>История сообщений</li>
+                            <li>Поддержка групп</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.0/signalr.min.js"></script>
+    <script src="~/js/chat.js"></script>
+}

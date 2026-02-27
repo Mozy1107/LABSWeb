@@ -1,0 +1,29 @@
+@page
+@model Rabota2.Pages.Rabochiye.DeleteModel
+
+@{
+    ViewData["Title"] = "Удалить механика";
+}
+
+<h1>Удалить механика</h1>
+
+<h3>Вы уверены, что хотите удалить этого механика?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Имя</dt>
+        <dd class="col-sm-9">@Model.Rabochiy.Name</dd>
+        
+        <dt class="col-sm-3">Специализация</dt>
+        <dd class="col-sm-9">@Model.Rabochiy.Specialnost</dd>
+        
+        <dt class="col-sm-3">Отдел обслуживания</dt>
+        <dd class="col-sm-9">@Model.Rabochiy.Ceh</dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Rabochiy.Id" />
+        <input type="submit" value="Удалить" class="btn btn-danger" />
+        <a asp-page="./Index" class="btn btn-secondary">Назад к списку</a>
+    </form>
+</div>

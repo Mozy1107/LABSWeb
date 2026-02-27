@@ -1,0 +1,46 @@
+@page
+@model Rabota2.Pages.Rabochiye.CreateModel
+
+@{
+    ViewData["Title"] = "Добавить механика";
+}
+
+<h1>Добавить механика</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Rabochiy.Name" class="form-label">Имя механика</label>
+                <input asp-for="Rabochiy.Name" class="form-control" />
+                <span asp-validation-for="Rabochiy.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Rabochiy.Specialnost" class="form-label">Специализация</label>
+                <input asp-for="Rabochiy.Specialnost" class="form-control" placeholder="Напр. Механик по ремонту двигателей" />
+                <span asp-validation-for="Rabochiy.Specialnost" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Rabochiy.Ceh" class="form-label">Отдел обслуживания</label>
+                <select asp-for="Rabochiy.Ceh" class="form-select">
+                    <option value="">Выберите отдел</option>
+                    <option value="Отдел обслуживания">Отдел обслуживания</option>
+                    <option value="Кузовной цех">Кузовной цех</option>
+                    <option value="Диагностический центр">Диагностический центр</option>
+                    <option value="Техническое обслуживание">Техническое обслуживание</option>
+                </select>
+                <span asp-validation-for="Rabochiy.Ceh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Назад к списку</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

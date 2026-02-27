@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoon Realistic Eclipse</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000; /* Фон совпадает с цветом Луны */
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Мультяшное, но реалистичное солнце */
+        .sun {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, #fffae6 20%, #ffcc00 50%, #ff8800 100%);
+            border-radius: 50%;
+            /* Эффект пятен на солнце */
+            background-image: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5) 0%, transparent 20%),
+                              radial-gradient(circle at 70% 60%, rgba(0,0,0,0.05) 0%, transparent 30%);
+            animation: sun-pulse 8s ease-in-out infinite alternate;
+        }
+
+        /* Луна, которая сливается с фоном */
+        .moon {
+            position: absolute;
+            width: 182px;
+            height: 182px;
+            background: #000; /* Цвет один в один как у body */
+            border-radius: 50%;
+            z-index: 10;
+            animation: moon-slide 8s ease-in-out infinite alternate;
+        }
+
+        /* Бриллиантовое кольцо (вспышка) */
+        .flash {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            border-radius: 50%;
+            z-index: 11;
+            filter: blur(8px);
+            opacity: 0;
+            animation: diamond-flash 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes moon-slide {
+            0% { transform: translateX(-150px); }
+            45%, 55% { transform: translateX(0px); }
+            100% { transform: translateX(150px); }
+        }
+
+        @keyframes sun-pulse {
+            0%, 40% {
+                box-shadow: 0 0 50px #ff8800;
+            }
+            50% {
+                box-shadow: 
+                    0 0 30px 10px #fff,
+                    0 0 100px 40px #ffcc00,
+                    0 0 300px 100px rgba(255, 255, 255, 0.3);
+                transform: scale(1.05);
+            }
+            60%, 100% {
+                box-shadow: 0 0 50px #ff8800;
+            }
+        }
+
+        @keyframes diamond-flash {
+            44%, 56% { opacity: 0; }
+            48%, 52% { 
+                opacity: 1; 
+                transform: translate(85px, -85px) scale(1.5);
+                box-shadow: 0 0 100px 30px #fff;
+            }
+        }
+
+        /* Мягкие лучи вокруг */
+        .sun::after {
+            content: '';
+            position: absolute;
+            top: -20%; left: -20%; right: -20%; bottom: -20%;
+            background: radial-gradient(circle, rgba(255,204,0,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sun"></div>
+        <div class="moon"></div>
+        <div class="flash"></div>
+    </div>
+</body>
+</html>

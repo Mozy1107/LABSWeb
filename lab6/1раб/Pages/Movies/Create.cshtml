@@ -1,0 +1,68 @@
+@page
+@model Rabota1.Pages.Movies.CreateModel
+
+@{
+    ViewData["Title"] = "Добавить автомобиль";
+}
+
+<div class="chat-hero">
+    <div class="container-lg">
+        <h1><i class="fas fa-plus-circle me-2"></i>Добавить новый автомобиль</h1>
+        <p class="text-subtitle">Заполните информацию об автомобиле и добавьте его в базу данных</p>
+    </div>
+</div>
+
+<div class="container-lg py-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                    
+                    <div class="form-group mb-4">
+                        <label asp-for="Car.Brand" class="form-label fw-600"><i class="fas fa-car me-2"></i>Марка</label>
+                        <input asp-for="Car.Brand" class="form-control form-control-lg" placeholder="Напр. Toyota, BMW" />
+                        <span asp-validation-for="Car.Brand" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label asp-for="Car.Model" class="form-label fw-600"><i class="fas fa-cube me-2"></i>Модель</label>
+                        <input asp-for="Car.Model" class="form-control form-control-lg" placeholder="Напр. Camry, X5" />
+                        <span asp-validation-for="Car.Model" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label asp-for="Car.Year" class="form-label fw-600"><i class="fas fa-calendar me-2"></i>Год выпуска</label>
+                        <input asp-for="Car.Year" class="form-control form-control-lg" type="number" min="1900" max="2100" />
+                        <span asp-validation-for="Car.Year" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label asp-for="Car.CarType" class="form-label fw-600"><i class="fas fa-tag me-2"></i>Тип</label>
+                        <input asp-for="Car.CarType" class="form-control form-control-lg" placeholder="Напр. Седан, Внедорожник, Кроссовер..." />
+                        <span asp-validation-for="Car.CarType" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label asp-for="Car.Price" class="form-label fw-600"><i class="fas fa-dollar-sign me-2"></i>Цена (руб.)</label>
+                        <input asp-for="Car.Price" class="form-control form-control-lg" placeholder="0" type="number" step="1000" />
+                        <span asp-validation-for="Car.Price" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="form-group d-grid gap-2">
+                        <button type="submit" class="btn btn-primary-gradient btn-lg">
+                            <i class="fas fa-save me-2"></i>Добавить автомобиль
+                        </button>
+                        <a asp-page="Index" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-arrow-left me-2"></i>Вернуться
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

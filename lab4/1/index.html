@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Course: Chapter 1</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --accent: #06b6d4;
+            --bg: #0f172a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+            color: #e2e8f0;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        .example {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .example:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-top: 0;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+            filter: brightness(1.1);
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            color: #10b981;
+            border-left: 3px solid #10b981;
+            min-height: 20px;
+        }
+
+        /* Маленький значок кода перед заголовками */
+        h2::before {
+            content: '{ }';
+            font-family: monospace;
+            font-weight: bold;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Глава 1: В незнакомых водах</h1>
+    
+    <div class="example">
+        <h2>Как работает JavaScript</h2>
+        <p>JavaScript — это "мозг" страницы. Он выполняется построчно. Результаты работы обычно смотрят в консоли разработчика.</p>
+        <button onclick="example1()">Запустить консоль</button>
+        <div id="output">Нажмите кнопку, чтобы увидеть лог...</div>
+    </div>
+    
+    <div class="example">
+        <h2>Переменные и значения</h2>
+        <p>Контейнеры для данных. Мы используем <b>let</b> для данных, которые меняются, и <b>const</b> для постоянных.</p>
+        <button onclick="example2()">Инициализировать данные</button>
+    </div>
+    
+    <div class="example">
+        <h2>Ключевые слова</h2>
+        <p>Это зарезервированные слова (инструкции), которые браузер понимает как команды к действию.</p>
+        <button onclick="example3()">Выполнить инструкции</button>
+    </div>
+
+    <script>
+        function example1() {
+            console.log("🚀 Поток выполнения начат");
+            const out = document.getElementById('output');
+            out.style.color = "#10b981";
+            out.innerHTML = "➜ Инструкции отправлены в консоль (F12)";
+            
+            setTimeout(() => {
+                console.warn("⚠️ JavaScript выполняется сверху вниз");
+                console.info("💡 Команды разделяются точкой с запятой (;)");
+            }, 500);
+        }
+        
+        function example2() {
+            let name = "Иван";
+            const age = 25;
+            
+            console.table([
+                { переменная: "name", значение: name, тип: typeof name },
+                { переменная: "age", значение: age, тип: typeof age }
+            ]);
+            
+            alert("Данные объявлены! Проверьте консоль для просмотра таблицы переменных.");
+        }
+        
+        function example3() {
+            console.group("Проверка логики");
+            let temp = 25;
+            if (temp > 20) {
+                console.log("Результат: Тепло (использовано 'if')");
+            }
+            
+            console.log("Цикл 'for':");
+            for (let i = 1; i <= 3; i++) {
+                console.log("Шаг №" + i);
+            }
+            console.groupEnd();
+            
+            alert("Циклы и условия отработали. Подробности в консоли (F12).");
+        }
+
+        console.log("%c JS COURSE LOADED ", "background: #6366f1; color: white; font-weight: bold; border-radius: 4px;");
+    </script>
+</body>
+</html>

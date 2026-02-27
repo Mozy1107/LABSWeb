@@ -1,0 +1,26 @@
+@page
+@model Rabota2.Pages.Rabochiye.DetailsModel
+
+@{
+    ViewData["Title"] = "Детали механика";
+}
+
+<h1>Детали механика</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Имя</dt>
+        <dd class="col-sm-9">@Model.Rabochiy.Name</dd>
+        
+        <dt class="col-sm-3">Специализация</dt>
+        <dd class="col-sm-9">@Model.Rabochiy.Specialnost</dd>
+        
+        <dt class="col-sm-3">Отдел обслуживания</dt>
+        <dd class="col-sm-9">@Model.Rabochiy.Ceh</dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Rabochiy.Id" class="btn btn-warning">Изменить</a>
+    <a asp-page="./Index" class="btn btn-secondary">Назад к списку</a>
+</div>

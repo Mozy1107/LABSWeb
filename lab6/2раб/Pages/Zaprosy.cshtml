@@ -1,0 +1,135 @@
+@page
+@model Rabota2.Pages.ZaprosyModel
+
+@{
+    ViewData["Title"] = "Запросы к базе данных";
+}
+
+<h1>Запросы к базе данных</h1>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5>Запрос 1: Имена рабочих заданного цеха</h5>
+            </div>
+            <div class="card-body">
+                <form method="get">
+                    <div class="mb-3">
+                        <label class="form-label">Выберите цех:</label>
+                        <select name="ceh" class="form-select">
+                            <option value="">-- Выберите цех --</option>
+                            <option value="Механический">Механический</option>
+                            <option value="Сборочный">Сборочный</option>
+                            <option value="Литейный">Литейный</option>
+                            <option value="Штамповочный">Штамповочный</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Найти</button>
+                </form>
+                
+                @if (!string.IsNullOrEmpty(Model.SelectedCeh))
+                {
+                    <hr />
+                    <h6>Рабочие цеха "@Model.SelectedCeh":</h6>
+                    @if (Model.RabochiyeByCeh.Any())
+                    {
+                        <ul class="list-group">
+                            @foreach (var r in Model.RabochiyeByCeh)
+                            {
+                                <li class="list-group-item">
+                                    <strong>@r.Name</strong><br />
+                                    <small class="text-muted">Специальность: @r.Specialnost</small>
+                                </li>
+                            }
+                        </ul>
+                        <div class="alert alert-info mt-3">
+                            Найдено: <strong>@Model.RabochiyeByCeh.Count</strong> человек
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted mt-3">Рабочих в этом цехе не найдено</p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5>Запрос 2: Количество инженеров в заданном подразделении</h5>
+            </div>
+            <div class="card-body">
+                <form method="get">
+                    <div class="mb-3">
+                        <label class="form-label">Выберите подразделение:</label>
+                        <select name="podrazdelenie" class="form-select">
+                            <option value="">-- Выберите подразделение --</option>
+                            <option value="Конструкторское бюро">Конструкторское бюро</option>
+                            <option value="Технологический отдел">Технологический отдел</option>
+                            <option value="Отдел автоматизации">Отдел автоматизации</option>
+                            <option value="Отдел качества">Отдел качества</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">Подсчитать</button>
+                </form>
+                
+                @if (!string.IsNullOrEmpty(Model.SelectedPodrazdelenie))
+                {
+                    <hr />
+                    <div class="alert alert-success">
+                        <h6>Подразделение: @Model.SelectedPodrazdelenie</h6>
+                        <p class="mb-0">Количество инженеров: <strong class="fs-4">@Model.InzheneryCount</strong></p>
+                    </div>
+                    
+                    @if (Model.InzheneryByPodrazdelenie.Any())
+                    {
+                        <h6>Список инженеров:</h6>
+                        <ul class="list-group">
+                            @foreach (var i in Model.InzheneryByPodrazdelenie)
+                            {
+                                <li class="list-group-item">
+                                    <strong>@i.Name</strong><br />
+                                    <small class="text-muted">@i.Kvalifikaciya</small>
+                                </li>
+                            }
+                        </ul>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5>Общая статистика</h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <h3>@Model.TotalRabochiye</h3>
+                        <p>Всего рабочих</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>@Model.TotalInzhenery</h3>
+                        <p>Всего инженеров</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>@Model.TotalAdministraciya</h3>
+                        <p>Всего администрации</p>
+                    </div>
+                </div>
+                <hr />
+                <div class="text-center">
+                    <h2>@Model.TotalEmployees</h2>
+                    <p>Общее количество сотрудников</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

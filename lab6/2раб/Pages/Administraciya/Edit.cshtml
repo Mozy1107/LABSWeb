@@ -1,0 +1,36 @@
+@page
+@model Rabota2.Pages.Administraciya.EditModel
+
+@{
+    ViewData["Title"] = "Редактировать сотрудника управления";
+}
+
+<h1>Редактировать сотрудника управления</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Administraciya.Id" />
+            <div class="form-group mb-3">
+                <label asp-for="Administraciya.Name" class="form-label">Имя сотрудника</label>
+                <input asp-for="Administraciya.Name" class="form-control" />
+                <span asp-validation-for="Administraciya.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Administraciya.Dolzhnost" class="form-label">Должность</label>
+                <input asp-for="Administraciya.Dolzhnost" class="form-control" />
+                <span asp-validation-for="Administraciya.Dolzhnost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-warning" />
+                <a asp-page="./Index" class="btn btn-secondary">Назад к списку</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

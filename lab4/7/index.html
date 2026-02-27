@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 7 - Серьезные типы</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --panel: #161b22;
+            --accent: #58a6ff;
+            --success: #3fb950;
+            --warning: #d29922;
+            --text: #c9d1d9;
+            --code-bg: #010409;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--success);
+            border-left: 3px solid var(--success);
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+
+        .example {
+            background: var(--panel);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transition: border-color 0.3s ease;
+        }
+
+        .example:hover {
+            border-color: var(--accent);
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 8px;
+            color: #d1d5db;
+            font-family: 'Consolas', monospace;
+            font-size: 14px;
+            border: 1px solid #21262d;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        button {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+
+        button:hover {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
+        }
+
+        input[type="text"] {
+            background: var(--code-bg);
+            border: 1px solid #30363d;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            outline: none;
+            width: calc(100% - 32px);
+            margin-bottom: 15px;
+            font-family: 'Consolas', monospace;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(1, 4, 9, 0.7);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text);
+            font-family: 'Consolas', monospace;
+        }
+
+        strong { color: var(--accent); }
+        .highlight { color: var(--warning); }
+        p { color: #8b949e; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Глава 7: Серьезные типы</h1>
+
+    <div class="example">
+        <h2>1. Сравнение == vs ===</h2>
+        <p>Нестрогое сравнение приводит типы, строгое — проверяет и значение, и тип.</p>
+        <button onclick="compareExample()">Выполнить тесты</button>
+        <div id="compareResult" class="result">Ожидание...</div>
+    </div>
+
+    <div class="example">
+        <h2>2. Преобразование типов</h2>
+        <p>Явное приведение данных к числу, строке или булеву значению.</p>
+        <button onclick="conversionExample()">Запустить парсинг</button>
+        <div id="conversionResult" class="result">Ожидание...</div>
+    </div>
+
+    <div class="example">
+        <h2>3. Методы строк</h2>
+        <input type="text" id="stringInput" placeholder="Введите текст" value="  JavaScript is Awesome  ">
+        <button onclick="stringMethods()">Анализировать строку</button>
+        <div id="stringResult" class="result">Ожидание...</div>
+    </div>
+
+    <div class="example">
+        <h2>4. Truthy & Falsy</h2>
+        <p>Как JavaScript оценивает значения в логическом контексте.</p>
+        <button onclick="truthyFalsy()">Проверить логику</button>
+        <div id="truthyResult" class="result">Ожидание...</div>
+    </div>
+</div>
+
+<script>
+    function compareExample() {
+        let res = '<strong>Результаты сравнения:</strong><br>';
+        res += `5 == "5" : <span class="highlight">${5 == "5"}</span> (Coercion)<br>`;
+        res += `5 === "5": <span class="highlight">${5 === "5"}</span> (Strict)<br>`;
+        res += `0 == false: ${0 == false}<br>`;
+        res += `null == undefined: ${null == undefined}<br>`;
+        res += `<br><strong>Совет:</strong> Всегда используйте <span class="highlight">===</span>`;
+        document.getElementById('compareResult').innerHTML = res;
+    }
+
+    function conversionExample() {
+        let res = '<strong>Type Conversion Log:</strong><br>';
+        res += `Number("123"): ${Number("123")} [${typeof Number("123")}]<br>`;
+        res += `parseInt("10px"): ${parseInt("10px")}<br>`;
+        res += `String(true): ${String(true)} [${typeof String(true)}]<br>`;
+        res += `Boolean(0): ${Boolean(0)}<br>`;
+        document.getElementById('conversionResult').innerHTML = res;
+    }
+
+    function stringMethods() {
+        let str = document.getElementById('stringInput').value;
+        let res = '<strong>String Analysis:</strong><br>';
+        res += `Length: ${str.length}<br>`;
+        res += `Trimmed: "${str.trim()}"<br>`;
+        res += `Upper: ${str.toUpperCase()}<br>`;
+        res += `Slice(2, 12): ${str.trim().slice(0, 10)}...<br>`;
+        res += `Split: [${str.trim().split(" ").join(" | ")}]`;
+        document.getElementById('stringResult').innerHTML = res;
+    }
+
+    function truthyFalsy() {
+        let res = '<strong>Falsy (всегда ложь):</strong><br>';
+        let falsy = [false, 0, "", null, undefined, NaN];
+        falsy.forEach(val => {
+            res += `Boolean(${val}): ${Boolean(val)}<br>`;
+        });
+        res += '<br><strong>Truthy (все остальное):</strong><br>';
+        res += `Boolean([]): ${Boolean([])} (Array)<br>`;
+        res += `Boolean({}): ${Boolean({})} (Object)`;
+        document.getElementById('truthyResult').innerHTML = res;
+    }
+</script>
+</body>
+</html>

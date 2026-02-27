@@ -1,0 +1,248 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 5 - Объекты</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --panel: #161b22;
+            --accent: #58a6ff;
+            --success: #3fb950;
+            --warning: #d29922;
+            --text: #c9d1d9;
+            --code-bg: #010409;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--success);
+            border-left: 3px solid var(--success);
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+
+        .example {
+            background: var(--panel);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transition: border-color 0.3s ease;
+        }
+
+        .example:hover {
+            border-color: var(--accent);
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 8px;
+            color: #d1d5db;
+            font-family: 'Consolas', monospace;
+            font-size: 14px;
+            border: 1px solid #21262d;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        button {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+
+        button:hover {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(1, 4, 9, 0.7);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            font-size: 14px;
+            line-height: 1.7;
+            min-height: 20px;
+        }
+
+        strong {
+            color: var(--accent);
+        }
+
+        p {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        /* Специальный стиль для карточки машины в примере 3 */
+        .car-card {
+            border: 1px dashed var(--accent);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Глава 5: Объектвиль</h1>
+        
+        <div class="example">
+            <h2>1. Создание объекта</h2>
+            <p>Объекты объединяют связанные данные в одну структуру (ключ: значение).</p>
+            <pre>
+let car = {
+    make: "Toyota",
+    model: "Camry",
+    year: 2020
+};</pre>
+            <button onclick="example1()">Инспектировать объект</button>
+            <div id="result1" class="result">Ожидание...</div>
+        </div>
+        
+        <div class="example">
+            <h2>2. Методы объекта</h2>
+            <p>Метод — это функция, сохраненная как свойство объекта.</p>
+            <pre>
+let dog = {
+    bark: function() { 
+        return "Гав-гав!"; 
+    }
+};</pre>
+            <button onclick="example2()">Вызвать методы</button>
+            <div id="result2" class="result">Ожидание...</div>
+        </div>
+        
+        <div class="example">
+            <h2>3. Состояние и поведение</h2>
+            <p>Объекты могут менять свое состояние (свойства) через поведение (методы).</p>
+            <button onclick="example3()">Симуляция системы</button>
+            <div id="result3" class="result">Ожидание...</div>
+        </div>
+        
+        <div class="example">
+            <h2>4. Массив объектов</h2>
+            <p>Типичный способ хранения коллекций данных (например, из базы данных).</p>
+            <button onclick="example4()">Загрузить список</button>
+            <div id="result4" class="result">Ожидание...</div>
+        </div>
+    </div>
+
+    <script>
+        function example1() {
+            let car = {
+                make: "Toyota",
+                model: "Camry",
+                year: 2020,
+                color: "синий",
+                mileage: 15000
+            };
+            
+            let output = "<strong>Свойства car:</strong><br>";
+            output += "Марка: " + car.make + "<br>";
+            output += "Год: " + car.year + "<br>";
+            output += "Доступ через скобки: " + car['model'];
+            
+            document.getElementById('result1').innerHTML = output;
+        }
+        
+        function example2() {
+            let dog = {
+                name: "Бобик",
+                breed: "Лабрадор",
+                age: 3,
+                bark: function() { return this.name + " говорит: Гав-гав!"; },
+                getInfo: function() {
+                    return `Порода: ${this.breed}, Возраст: ${this.age}`;
+                }
+            };
+            
+            document.getElementById('result2').innerHTML = 
+                "<strong>Метод getInfo:</strong> " + dog.getInfo() + "<br>" +
+                "<strong>Метод bark:</strong> " + dog.bark();
+        }
+        
+        function example3() {
+            let car = {
+                make: "BMW",
+                model: "X5",
+                speed: 0,
+                isEngineOn: false,
+                startEngine: function() { this.isEngineOn = true; return "Двигатель запущен"; },
+                accelerate: function(v) { 
+                    if(this.isEngineOn) { this.speed += v; return "Скорость: " + this.speed + " км/ч"; }
+                    return "Ошибка: заведите двигатель!";
+                }
+            };
+            
+            let log = "➜ " + car.startEngine() + "<br>";
+            log += "➜ " + car.accelerate(60) + "<br>";
+            log += "<strong>Финальный статус:</strong> " + car.make + " " + car.model + ", скорость " + car.speed;
+            
+            document.getElementById('result3').innerHTML = log;
+        }
+        
+        function example4() {
+            let students = [
+                { name: "Иван", grade: 85 },
+                { name: "Мария", grade: 92 },
+                { name: "Петр", grade: 78 }
+            ];
+            
+            let output = "<strong>База студентов:</strong><br>";
+            let total = 0;
+            students.forEach((s, i) => {
+                output += `${i+1}. ${s.name} — ${s.grade}%<br>`;
+                total += s.grade;
+            });
+            output += "<br><strong>Средний балл:</strong> " + (total/students.length).toFixed(1);
+            
+            document.getElementById('result4').innerHTML = output;
+        }
+    </script>
+</body>
+</html>

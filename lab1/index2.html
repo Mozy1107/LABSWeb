@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 6 - Индивидуальные стили</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Стили для таблицы данных (пунктир и красные заголовки) */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            font-family: sans-serif;
+        }
+        .data-table th, .data-table td {
+            border: 1px dashed #bbb;
+            padding: 8px;
+            text-align: left;
+        }
+        .data-table th {
+            color: red;
+            font-weight: bold;
+        }
+        .table-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 40px;
+            color: #333;
+        }
+
+        /* --- ТВОЙ GRID (НЕ ТРОГАЕМ) --- */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 150px 150px;
+            width: 100%;
+            max-width: 1000px;
+            margin: 40px auto;
+            border: 2px solid #000;
+            background-color: white;
+            box-sizing: border-box;
+        }
+
+        .layout-grid div {
+            border: 1px solid #000;
+            box-sizing: border-box;
+        }
+
+        .nested-rows {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .nested-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .nested-cols-custom {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+        }
+
+        /* --- СТИЛИ ДЛЯ ВТОРОЙ (ГРАФИЧЕСКОЙ) ТАБЛИЦЫ --- */
+        .graphic-table {
+            border-collapse: collapse;
+            width: 100%;
+            height: 220px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .graphic-table td {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<style>
+.third-table{
+    border-collapse:collapse;
+    width:100%;
+    height:180px;
+    margin:40px auto;
+}
+.third-table td{
+    border:4px solid #000;
+    width:25%;
+}
+.third-inner{
+    width:100%;
+    height:100%;
+    border-collapse:collapse;
+}
+.third-inner td{
+    border:0;
+}
+.third-inner td+td{
+    border-left:4px solid #000;
+}
+</style>
+
+
+<body>
+
+<h1 class="title">ПРИВЕТ МИР</h1>
+
+<p style="color: #666;">
+    Давно выяснено, что при оценке дизайна и композиции читаемый текст 
+    <span style="text-decoration: line-through;">мешает<br>сосредоточиться</span>.
+</p>
+
+<p class="justify" style="color: #444;">
+    Lorem &nbsp;ipsum &nbsp;используют &nbsp;потому,&nbsp;&nbsp; что &nbsp;тот&nbsp; обеспечивает &nbsp;более &nbsp;&nbsp;или &nbsp;&nbsp;менее<br>
+    стандартное &nbsp; &nbsp;<u>заполнение шаблона</u>,&nbsp;&nbsp; а &nbsp;&nbsp;также &nbsp;&nbsp;реальное&nbsp;&nbsp; распределение &nbsp;&nbsp;букв &nbsp;&nbsp;и <br>
+    пробелов в абзацах, которое не получается при простой дубликации.
+</p>
+
+<div style="font-weight: bold; font-size: 22px; color: #444; margin-top: 15px;">
+    Список покупок:
+</div>
+<ul>
+    <li>Хлеб</li>
+    <li>Молоко</li>
+    <li>Картошка</li>
+</ul>
+
+<div style="font-weight: bold; font-size: 22px; color: #444; margin-top: 15px;">
+    Инструкция:
+</div>
+<ol>
+    <li>Вставить батарейки в пульт</li>
+    <li>Нажать кнопку ВКЛ</li>
+</ol>
+
+<dl style="margin-top: 20px;">
+    <dt>Молоко</dt>
+    <dd>1 литр</dd>
+    <dt>Картошка</dt>
+    <dd>2 кг</dd>
+</dl>
+
+<hr>
+
+<div class="table-title">ТАБЛИЦЫ</div>
+<table class="data-table">
+    <thead>
+        <tr>
+            <th style="width: 40px;">#</th>
+            <th>Имя</th>
+            <th>E-mail</th>
+            <th>Дата регистрации</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Дмитрий</td>
+            <td>dima@mail.com</td>
+            <td>21.01.2020</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Александр</td>
+            <td>alex@mail.com</td>
+            <td>22.01.2020</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="text-align: right; border-top: 1px dashed #ccc;">
+                Всего: 2
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="table-title">Таблицы: 1 Вариант</div>
+
+<!-- ТВОЯ ПЕРВАЯ (GRID) 1-->
+<div class="layout-grid">
+    <div></div>
+    <div class="nested-rows">
+        <div></div>
+        <div></div>
+    </div>
+    <div class="nested-cols">
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="nested-cols">
+        <div class="nested-rows">
+            <div></div>
+            <div></div>
+        </div>
+        <div></div>
+    </div>
+    <div></div>
+    <div></div>
+</div>
+
+<!-- ВТОРАЯ ТАБЛИЦА 6-->
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        height: 220px;
+    }
+    td {
+        border: 4px solid black;
+    }
+</style>
+
+<table>
+    <tr>
+        <td rowspan="2"></td>
+        <td colspan="2"></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan="2"></td>
+        <td rowspan="2"></td>
+        <td rowspan="3"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td rowspan="2"></td>
+    </tr>
+    <tr>
+        <td colspan="3"></td>
+    </tr>
+</table>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        height: 180px;
+    }
+    td {
+        border: 4px solid black;
+    }
+
+</style>
+
+<!-- ТРЕТЬЯ ТАБЛИЦА 11-->
+<table class="third-table">
+<tr>
+    <td>
+        <table class="third-inner">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </td>
+    <td rowspan="2"></td>
+    <td></td>
+    <td rowspan="2"></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td colspan="3"></td>
+</tr>
+</table>
+
+
+
+<br><br>
+
+</body>
+</html>

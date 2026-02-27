@@ -1,0 +1,206 @@
+@page
+@model Rabota1.Pages.Movies.EditModel
+
+@{
+    ViewData["Title"] = "Редактировать автомобиль";
+}
+
+<style>
+    .edit-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2.5rem 0;
+        margin-bottom: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        text-align: center;
+    }
+
+    .edit-hero h1 {
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .edit-hero p {
+        font-size: 1rem;
+        opacity: 0.95;
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.5rem;
+        display: block;
+        font-size: 0.95rem;
+    }
+
+    .form-control {
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 0.75rem;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        width: 100%;
+    }
+
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        outline: none;
+    }
+
+    .text-danger {
+        color: #dc3545;
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+        display: block;
+    }
+
+    .validation-summary {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    .validation-summary ul {
+        margin: 0;
+        padding-left: 1.5rem;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn-submit {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        color: white;
+        padding: 0.85rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        flex: 1;
+    }
+
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-cancel {
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        color: #666;
+        padding: 0.85rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+
+    .btn-cancel:hover {
+        background: white;
+        border-color: #667eea;
+        color: #667eea;
+    }
+</style>
+
+<div class="edit-hero">
+    <div class="container">
+        <h1><i class="fas fa-edit" style="margin-right: 0.5rem;"></i>Редактировать автомобиль</h1>
+        <p>Обновите информацию об автомобиле</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="form-container">
+        <form method="post">
+            <input type="hidden" asp-for="Car.Id" />
+            
+            @if (!ModelState.IsValid && ModelState.Values.Any(v => v.Errors.Count > 0))
+            {
+                <div class="validation-summary" asp-validation-summary="ModelOnly"></div>
+            }
+
+            <div class="form-group">
+                <label asp-for="Car.Brand" class="form-label">
+                    <i class="fas fa-car" style="margin-right: 0.5rem;"></i>Марка
+                </label>
+                <input asp-for="Car.Brand" class="form-control" placeholder="Напр. Toyota, BMW" />
+                <span asp-validation-for="Car.Brand" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Car.Model" class="form-label">
+                    <i class="fas fa-cube" style="margin-right: 0.5rem;"></i>Модель
+                </label>
+                <input asp-for="Car.Model" class="form-control" placeholder="Напр. Camry, X5" />
+                <span asp-validation-for="Car.Model" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Car.Year" class="form-label">
+                    <i class="fas fa-calendar" style="margin-right: 0.5rem;"></i>Год выпуска
+                </label>
+                <input asp-for="Car.Year" type="number" min="1900" max="2100" class="form-control" />
+                <span asp-validation-for="Car.Year" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Car.CarType" class="form-label">
+                    <i class="fas fa-tag" style="margin-right: 0.5rem;"></i>Тип
+                </label>
+                <input asp-for="Car.CarType" class="form-control" placeholder="Например: Седан, Кроссовер, Внедорожник" />
+                <span asp-validation-for="Car.CarType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Car.Price" class="form-label">
+                    <i class="fas fa-dollar-sign" style="margin-right: 0.5rem;"></i>Цена (руб.)
+                </label>
+                <input asp-for="Car.Price" type="number" step="1000" class="form-control" placeholder="0" />
+                <span asp-validation-for="Car.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-save" style="margin-right: 0.5rem;"></i>Сохранить
+                </button>
+                <a asp-page="./Index" class="btn-cancel">
+                    <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>Отмена
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

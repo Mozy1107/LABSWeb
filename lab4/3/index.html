@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 3 - Функции</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --panel: #161b22;
+            --accent: #58a6ff;
+            --success: #3fb950;
+            --warning: #d29922;
+            --text: #c9d1d9;
+            --code-bg: #010409;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--success);
+            border-left: 3px solid var(--success);
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+
+        .example {
+            background: var(--panel);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transition: border-color 0.3s ease;
+        }
+
+        .example:hover {
+            border-color: var(--accent);
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 8px;
+            color: #d1d5db;
+            font-family: 'Consolas', monospace;
+            font-size: 14px;
+            border: 1px solid #21262d;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        button {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+
+        button:hover {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
+        }
+
+        input[type="number"] {
+            background: var(--code-bg);
+            border: 1px solid #30363d;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            outline: none;
+            width: 100px;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"]:focus {
+            border-color: var(--success);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(1, 4, 9, 0.7);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            font-size: 14px;
+            line-height: 1.7;
+            min-height: 20px;
+            color: var(--text);
+        }
+
+        strong { color: var(--accent); }
+        p { color: #8b949e; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Глава 3: Функции</h1>
+
+    <div class="example">
+        <h2>1. Объявление функции</h2>
+        <pre>function sayHello() {
+    console.log("Привет!");
+}</pre>
+        <button onclick="example1()">Запустить</button>
+        <div id="result1" class="result">Ожидание...</div>
+    </div>
+
+    <div class="example">
+        <h2>2. Параметры и аргументы</h2>
+        <pre>function greet(name, age) {
+    return "Привет, " + name + "! Тебе " + age + " лет.";
+}</pre>
+        <button onclick="example2()">Запустить</button>
+        <div id="result2" class="result">Ожидание...</div>
+    </div>
+
+    <div class="example">
+        <h2>3. Return - возврат значения</h2>
+        <pre>function add(a, b) { return a + b; }
+function multiply(a, b) { return a * b; }</pre>
+        <button onclick="example3()">Запустить</button>
+        <div id="result3" class="result">Ожидание...</div>
+    </div>
+
+    <div class="example">
+        <h2>4. Область видимости</h2>
+        <p>Глобальные переменные доступны везде, локальные — только внутри функции.</p>
+        <button onclick="example4()">Проверить Scope</button>
+        <div id="result4" class="result">Ожидание...</div>
+    </div>
+
+    <div class="example">
+        <h2>5. Калькулятор (практика)</h2>
+        <input type="number" id="num1" placeholder="Число 1" value="10">
+        <input type="number" id="num2" placeholder="Число 2" value="5">
+        <br>
+        <button onclick="calculate('add')">+</button>
+        <button onclick="calculate('subtract')">-</button>
+        <button onclick="calculate('multiply')">*</button>
+        <button onclick="calculate('divide')">/</button>
+        <div id="calcResult" class="result">Результат отобразится здесь</div>
+    </div>
+</div>
+
+<script>
+    function example1() {
+        function sayHello() { return "Привет из функции!"; }
+        document.getElementById('result1').innerHTML = "➜ " + sayHello();
+    }
+
+    function example2() {
+        function greet(name, age) { return "Привет, " + name + "! Тебе " + age + " лет."; }
+        document.getElementById('result2').innerHTML = "➜ " + greet("Иван", 25) + "<br>➜ " + greet("Мария", 30);
+    }
+
+    function example3() {
+        function add(a, b) { return a + b; }
+        function multiply(a, b) { return a * b; }
+        function power(base, exp) { 
+            let res = 1; 
+            for(let i=0; i<exp; i++) res *= base; 
+            return res; 
+        }
+        document.getElementById('result3').innerHTML = `5 + 3 = ${add(5,3)}<br>4 * 7 = ${multiply(4,7)}<br>2³ = ${power(2,3)}`;
+    }
+
+    function example4() {
+        let globalVar = "Я глобальная";
+        function testScope() {
+            let localVar = "Я локальная";
+            return "Внутри: " + globalVar + " & " + localVar;
+        }
+        document.getElementById('result4').innerHTML = testScope() + "<br>Вне: " + globalVar + " | <span style='color:var(--warning)'>localVar: Ошибка</span>";
+    }
+
+    function calculate(op) {
+        let n1 = parseFloat(document.getElementById('num1').value);
+        let n2 = parseFloat(document.getElementById('num2').value);
+        let res;
+        if (op === 'add') res = n1 + n2;
+        else if (op === 'subtract') res = n1 - n2;
+        else if (op === 'multiply') res = n1 * n2;
+        else if (op === 'divide') res = n2 !== 0 ? n1 / n2 : "Ошибка (0)";
+        document.getElementById('calcResult').innerHTML = "<strong>Результат:</strong> " + res;
+    }
+</script>
+</body>
+</html>

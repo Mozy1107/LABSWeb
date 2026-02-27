@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №3 - Навигация</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar-header {
+            padding: 20px;
+            background-color: #1a252f;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-bottom: 1px solid #34495e;
+        }
+        .section-title {
+            padding: 15px 20px 5px 20px;
+            font-size: 0.85em;
+            color: #95a5a6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #34495e;
+            background-color: #243342;
+        }
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu-list li {
+            border-bottom: 1px solid #34495e;
+        }
+        .menu-list a {
+            display: block;
+            padding: 12px 20px;
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: background 0.3s, padding-left 0.3s;
+        }
+        .menu-list a:hover {
+            background-color: #34495e;
+            padding-left: 25px;
+        }
+        .menu-list a.active {
+            background-color: #3498db;
+            border-left: 5px solid #2980b9;
+            padding-left: 20px;
+        }
+        .content {
+            flex-grow: 1;
+            background-color: white;
+            display: flex;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        /* Стилизация скроллбара */
+        .sidebar::-webkit-scrollbar { width: 8px; }
+        .sidebar::-webkit-scrollbar-track { background: #2c3e50; }
+        .sidebar::-webkit-scrollbar-thumb { background: #34495e; border-radius: 4px; }
+        .sidebar::-webkit-scrollbar-thumb:hover { background: #3498db; }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            Лабораторная 3<br><span style="font-size: 0.7em; font-weight: normal;">Оглавление</span>
+        </div>
+        
+        <div class="section-title">Bootstrap</div>
+        <ul class="menu-list" id="menu-bootstrap">
+            <li><a href="bootstrap/01-add-bootstrap/index.html" target="viewer" class="active">01. Add Bootstrap</a></li>
+            <li><a href="bootstrap/02-skeleton/index.html" target="viewer">02. Skeleton</a></li>
+            <li><a href="bootstrap/03-grid/index.html" target="viewer">03. Grid</a></li>
+            <li><a href="bootstrap/04-navbar/index.html" target="viewer">04. Navbar</a></li>
+            <li><a href="bootstrap/05-sidebar-menu/index.html" target="viewer">05. Sidebar Menu</a></li>
+            <li><a href="bootstrap/06-three-column/index.html" target="viewer">06. Three Column</a></li>
+            <li><a href="bootstrap/07-buttons-alerts/index.html" target="viewer">07. Buttons & Alerts</a></li>
+            <li><a href="bootstrap/08-forms/index.html" target="viewer">08. Forms</a></li>
+            <li><a href="bootstrap/09-flexbox/index.html" target="viewer">09. Flexbox</a></li>
+        </ul>
+
+        <div class="section-title">CSS Layout</div>
+        <ul class="menu-list" id="menu-css">
+            <li><a href="css-layout/01-positioning/index.html" target="viewer">01. Positioning</a></li>
+            <li><a href="css-layout/02-z-index/index.html" target="viewer">02. Z-Index</a></li>
+            <li><a href="css-layout/03-float/index.html" target="viewer">03. Float</a></li>
+            <li><a href="css-layout/04-centering/index.html" target="viewer">04. Centering</a></li>
+            <li><a href="css-layout/05-sidebar/index.html" target="viewer">05. Sidebar</a></li>
+            <li><a href="css-layout/06-three-columns/index.html" target="viewer">06. Three Columns</a></li>
+            <li><a href="css-layout/07-layout-design/index.html" target="viewer">07. Layout Design</a></li>
+            <li><a href="css-layout/08-static-layout/index.html" target="viewer">08. Static Layout</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <iframe name="viewer" src="bootstrap/01-add-bootstrap/index.html" id="viewerFrame"></iframe>
+    </div>
+
+    <script>
+        // Скрипт для подсветки активного пункта меню во всех списках
+        const menuLinks = document.querySelectorAll('.menu-list a');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Удаляем класс active у всех ссылок
+                menuLinks.forEach(item => item.classList.remove('active'));
+                // Добавляем класс active на кликнутую ссылку
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>

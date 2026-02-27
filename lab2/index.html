@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №2 - Навигация</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            width: 260px;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar-header {
+            padding: 20px;
+            background-color: #1a252f;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-bottom: 1px solid #34495e;
+        }
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu-list li {
+            border-bottom: 1px solid #34495e;
+        }
+        .menu-list a {
+            display: block;
+            padding: 15px 20px;
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: background 0.3s, padding-left 0.3s;
+        }
+        .menu-list a:hover {
+            background-color: #34495e;
+            padding-left: 25px;
+        }
+        .menu-list a.active {
+            background-color: #3498db;
+            border-left: 5px solid #2980b9;
+            padding-left: 20px;
+        }
+        .content {
+            flex-grow: 1;
+            background-color: white;
+            display: flex;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        /* Стилизация скроллбара для меню */
+        .sidebar::-webkit-scrollbar { width: 8px; }
+        .sidebar::-webkit-scrollbar-track { background: #2c3e50; }
+        .sidebar::-webkit-scrollbar-thumb { background: #34495e; border-radius: 4px; }
+        .sidebar::-webkit-scrollbar-thumb:hover { background: #3498db; }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            Лабораторная 2<br><span style="font-size: 0.7em; font-weight: normal;">Оглавление</span>
+        </div>
+        <ul class="menu-list" id="menu">
+            <li><a href="1/index.html" target="viewer" class="active">Задание 1</a></li>
+            <li><a href="2/index.html" target="viewer">Задание 2</a></li>
+            <li><a href="3/index.html" target="viewer">Задание 3</a></li>
+            <li><a href="4.1/index.html" target="viewer">Задание 4.1</a></li>
+            <li><a href="4.2/index.html" target="viewer">Задание 4.2</a></li>
+            <li><a href="4.3/index.html" target="viewer">Задание 4.3</a></li>
+            <li><a href="5.1/index.html" target="viewer">Задание 5.1</a></li>
+            <li><a href="5.2/index.html" target="viewer">Задание 5.2</a></li>
+            <li><a href="5.3/index.html" target="viewer">Задание 5.3</a></li>
+            <li><a href="5.4/index.html" target="viewer">Задание 5.4</a></li>
+            <li><a href="5.5/index.html" target="viewer">Задание 5.5</a></li>
+            <li><a href="6/index.html" target="viewer">Задание 6</a></li>
+            <li><a href="7/index.html" target="viewer">Задание 7</a></li>
+            <li><a href="8/index.html" target="viewer">Задание 8</a></li>
+            <li><a href="9/index.html" target="viewer">Задание 9</a></li>
+            <li><a href="10/index.html" target="viewer">Задание 10</a></li>
+            <li><a href="11/index.html" target="viewer">Задание 11</a></li>
+            <li><a href="12/index.html" target="viewer">Задание 12</a></li>
+            <li><a href="13/index.html" target="viewer">Задание 13</a></li>
+            <li><a href="14/index.html" target="viewer">Задание 14</a></li>
+            <li><a href="15/index.html" target="viewer">Задание 15</a></li>
+            <li><a href="Тренировка/index.html" target="viewer">Тренировка: Index</a></li>
+            <li><a href="Тренировка/sun.html" target="viewer">Тренировка: Sun</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <iframe name="viewer" src="1/index.html" id="viewerFrame"></iframe>
+    </div>
+
+    <script>
+        // Скрипт для подсветки активного пункта меню
+        const menuLinks = document.querySelectorAll('#menu a');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Удаляем класс active у всех ссылок
+                menuLinks.forEach(item => item.classList.remove('active'));
+                // Добавляем класс active на кликнутую ссылку
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>

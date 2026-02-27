@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Морской Бой: Стратегия</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="waves"></div>
+    <header>
+        <h1>МОРСКОЙ БОЙ</h1>
+        <div id="score">Игрок: 0 | Бот: 0</div>
+        <div class="controls">
+            <button id="rotate-btn">ПОВЕРНУТЬ</button>
+            <button id="auto-btn">АВТО</button>
+            <button id="start-btn" disabled>В БОЙ!</button>
+            <button id="reset-btn">СБРОС</button>
+        </div>
+    </header>
+
+    <div class="game-container">
+        <div class="board-wrapper">
+            <h3 id="player-title">ВАШ ФЛОТ</h3>
+            <div id="player-board" class="board"></div>
+        </div>
+        <div class="board-wrapper">
+            <h3>ФЛОТ ПРОТИВНИКА</h3>
+            <div id="enemy-board" class="board blur"></div>
+        </div>
+    </div>
+
+    <div class="status-panel" id="status">Расставьте корабли вручную или нажмите "АВТО"</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

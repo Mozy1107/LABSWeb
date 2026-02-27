@@ -1,0 +1,36 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Главная";
+}
+
+<div class="main-card p-5 shadow-sm" style="background: white; border-radius: 16px; border: 1px solid #e2e8f0;">
+    <div class="text-center">
+        <div class="badge-tech mb-3" style="display: inline-block; background: #eff6ff; color: #1d4ed8; padding: 5px 15px; border-radius: 20px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">
+            Система управления данными
+        </div>
+        <h1 class="display-5 fw-bold" style="color: #0f172a;">Добро пожаловать</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 600px;">
+            Это программный комплекс для ведения учета и управления медиатекой, разработанный в рамках лабораторной работы по дисциплине «Информационные системы».
+        </p>
+        
+        <hr class="my-5" style="opacity: 0.1;">
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="p-4" style="background: #f8fafc; border-radius: 12px; border: 1px solid #f1f5f9;">
+                    <h3 class="h5 fw-bold">Быстрый доступ</h3>
+                    <p class="small text-muted">Перейдите к основному разделу базы данных для редактирования записей.</p>
+                    <a asp-page="/Movies/Index" class="btn btn-primary px-4 py-2" style="background: #2563eb; border: none; border-radius: 8px; font-weight: 500;">
+                        Открыть каталог фильмов
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5 pt-4 border-top" style="border-top: 1px solid #f1f5f9 !important;">
+            <p class="text-muted mb-0">Разработчик: <span class="fw-bold" style="color: #0f172a;">Даниил Белов</span></p>
+            <p class="small text-muted">Группа: ИСП-301 (или твой номер)</p>
+        </div>
+    </div>
+</div>

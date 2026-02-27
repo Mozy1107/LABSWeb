@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Работа 6 - Выбор подработы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(180deg, #fafbfc 0%, #f5f7fa 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+        
+        .header p {
+            font-size: 1em;
+            color: #7f8c8d;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+        
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .nav-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px 28px;
+            box-shadow: 0 2px 8px rgba(100, 120, 160, 0.08);
+            border: 1px solid rgba(200, 210, 240, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 280px;
+        }
+        
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(100, 120, 160, 0.12);
+        }
+        
+        .nav-card-icon {
+            font-size: 3.5em;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+        
+        .nav-card h2 {
+            font-size: 1.6em;
+            color: #34495e;
+            margin-bottom: 8px;
+            font-weight: 400;
+            letter-spacing: -0.3px;
+        }
+        
+        .nav-card .subtitle {
+            font-size: 0.9em;
+            color: #a8b4d0;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        
+        .nav-card p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .nav-link {
+            display: inline-block;
+            padding: 10px 24px;
+            background-color: #ecf0f7;
+            color: #5b7ba8;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid rgba(91, 123, 168, 0.15);
+            font-size: 0.9em;
+            margin-top: auto;
+        }
+        
+        .nav-link:hover {
+            background-color: #dde5f0;
+            color: #4a6fa5;
+            border-color: rgba(91, 123, 168, 0.3);
+            transform: translateY(-1px);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: #7f8c8d;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid rgba(127, 140, 141, 0.3);
+            font-size: 0.9em;
+        }
+        
+        .back-link:hover {
+            background-color: rgba(127, 140, 141, 0.08);
+            color: #5b7ba8;
+            border-color: rgba(91, 123, 168, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.7em;
+            }
+            
+            .nav-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .nav-card {
+                padding: 24px;
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Лабораторная работа 6</h1>
+            <p>Выберите подработу</p>
+        </div>
+        
+        <div class="nav-grid">
+            <!-- Work 6.1 -->
+            <div class="nav-card">
+                <div>
+                    <div class="nav-card-icon">📟</div>
+                    <h2>Работа 6.1</h2>
+                    <div class="subtitle">ASP.NET Core</div>
+                    <p>Первое веб-приложение с Razor Pages и базой данных SQLite</p>
+                </div>
+                <a href="http://localhost:5051" class="nav-link">Открыть</a>
+            </div>
+            
+            <!-- Work 6.2 -->
+            <div class="nav-card">
+                <div>
+                    <div class="nav-card-icon">🎯</div>
+                    <h2>Работа 6.2</h2>
+                    <div class="subtitle">ASP.NET Core</div>
+                    <p>Вторая часть лабораторной работы с дополнительными функциями</p>
+                </div>
+                <a href="http://localhost:5052" class="nav-link">Открыть</a>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="../index.html" class="back-link">← Вернуться к основному меню</a>
+        </div>
+    </div>
+</body>
+</html>

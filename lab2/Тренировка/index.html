@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch Rings</title>
+    <style>
+        body {
+            background: #050505;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .scene {
+            width: 500px;
+            height: 500px;
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
+        }
+        
+        .ring {
+            fill: none;
+            stroke-width: 14;
+            stroke-linecap: round;
+            transform-origin: 150px 150px;
+            animation: draw ease-in-out infinite alternate;
+        }
+        
+        .r1 {
+            --c: 880;
+            stroke-dasharray: 880;
+            stroke: #00d4ff;
+            animation-duration: 4s;
+        }
+        
+        .r2 {
+            --c: 723;
+            stroke-dasharray: 723;
+            stroke: #ff0055;
+            animation-duration: 4.8s;
+        }
+        
+        .r3 {
+            --c: 566;
+            stroke-dasharray: 566;
+            stroke: #92B901;
+            animation-duration: 5.6s;
+        }
+        
+        .r4 {
+            --c: 409;
+            stroke-dasharray: 409;
+            stroke: #ffcc00;
+            animation-duration: 6.4s;
+        }
+        
+        .r5 {
+            --c: 252;
+            stroke-dasharray: 252;
+            stroke: #7000ff;
+            animation-duration: 7.2s;
+        }
+        
+        @keyframes draw {
+            0% {
+                stroke-dashoffset: var(--c);
+                transform: rotate(-90deg);
+            }
+            100% {
+                stroke-dashoffset: 0;
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg viewBox="0 0 300 300" class="scene">
+        <circle class="ring r1" cx="150" cy="150" r="140"></circle>
+        <circle class="ring r2" cx="150" cy="150" r="115"></circle>
+        <circle class="ring r3" cx="150" cy="150" r="90"></circle>
+        <circle class="ring r4" cx="150" cy="150" r="65"></circle>
+        <circle class="ring r5" cx="150" cy="150" r="40"></circle>
+    </svg>
+</body>
+</html>

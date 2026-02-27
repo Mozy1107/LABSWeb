@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 20px; 
+    background-color: white;
+    font-family: sans-serif;
+
+    box-sizing: border-box; 
+}
+
+#wrapper {
+    display: flex;
+    height: 100px;
+    width: 100%;
+}
+
+#sidebar {
+    width: 30%;
+    background: #969696; 
+    color: black;
+    padding: 10px; 
+    box-sizing: border-box; 
+}
+
+#content {
+    width: 70%;
+    background: #325d2d; 
+    color: black;
+    padding: 10px; 
+    box-sizing: border-box; 
+}

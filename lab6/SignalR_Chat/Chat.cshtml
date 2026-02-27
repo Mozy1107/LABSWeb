@@ -1,0 +1,48 @@
+@page
+@model ChatModel
+@{
+    ViewData["Title"] = "Центр связи";
+}
+
+<div class="main-card shadow-sm" style="background: white; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden;">
+    <div class="p-4 border-bottom" style="background: #f8fafc;">
+        <h2 class="h4 fw-bold mb-0" style="color: #0f172a;">
+            <span style="color: #2563eb;">●</span> Корпоративный чат
+        </h2>
+        <p class="small text-muted mb-0">Система обмена сообщениями в реальном времени (SignalR)</p>
+    </div>
+
+    <div class="p-4">
+        <div class="row">
+            <div class="col-md-4 border-end">
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-uppercase">Ваш профиль</label>
+                    <input type="text" id="userInput" value="Даниил Белов" class="form-control" style="border-radius: 8px;" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-uppercase">Сообщение</label>
+                    <textarea id="messageInput" class="form-control" rows="3" placeholder="Введите текст..." style="border-radius: 8px;"></textarea>
+                </div>
+                <button id="sendButton" class="btn btn-primary w-100" style="background: #2563eb; border: none; border-radius: 8px; font-weight: 600;">
+                    Отправить
+                </button>
+            </div>
+
+            <div class="col-md-8">
+                <label class="form-label small fw-bold text-uppercase px-2">История сообщений</label>
+                <div id="messagesListContainer" style="height: 400px; overflow-y: auto; background: #f1f5f9; border-radius: 12px; padding: 15px;">
+                    <ul id="messagesList" class="list-unstyled"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer py-3 px-4 text-end" style="background: #f8fafc; border-top: 1px solid #e2e8f0;">
+        <small class="text-muted">Разработчик модуля: <strong>Даниил Белов</strong></small>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
+}

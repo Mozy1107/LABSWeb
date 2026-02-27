@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 4 - Массивы</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --panel: #161b22;
+            --accent: #58a6ff;
+            --success: #3fb950;
+            --warning: #d29922;
+            --text: #c9d1d9;
+            --code-bg: #010409;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--success);
+            border-left: 3px solid var(--success);
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+
+        .example {
+            background: var(--panel);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transition: border-color 0.3s ease;
+        }
+
+        .example:hover {
+            border-color: var(--accent);
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 8px;
+            color: #d1d5db;
+            font-family: 'Consolas', monospace;
+            font-size: 14px;
+            border: 1px solid #21262d;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        button {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+
+        button:hover {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
+        }
+
+        input[type="number"] {
+            background: var(--code-bg);
+            border: 1px solid #30363d;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            outline: none;
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"]:focus {
+            border-color: var(--success);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(1, 4, 9, 0.7);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            font-size: 14px;
+            line-height: 1.7;
+            min-height: 20px;
+        }
+
+        strong {
+            color: var(--accent);
+        }
+
+        p {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Глава 4: Массивы</h1>
+        
+        <div class="example">
+            <h2>1. Объявление массивов</h2>
+            <pre>
+let fruits = ["яблоко", "банан", "апельсин"];
+let numbers = [1, 2, 3, 4, 5];
+let mixed = [1, "текст", true, null];</pre>
+            <button onclick="example1()">Показать данные</button>
+            <div id="result1" class="result">Ожидание команды...</div>
+        </div>
+        
+        <div class="example">
+            <h2>2. Метод push()</h2>
+            <p>Добавление новых элементов в конец существующего массива.</p>
+            <button onclick="example2()">Добавить элементы</button>
+            <div id="result2" class="result">Ожидание команды...</div>
+        </div>
+        
+        <div class="example">
+            <h2>3. Цикл for</h2>
+            <p>Стандартный способ перебора элементов массива для обработки данных.</p>
+            <button onclick="example3()">Запустить цикл</button>
+            <div id="result3" class="result">Ожидание команды...</div>
+        </div>
+        
+        <div class="example">
+            <h2>4. Генератор чисел</h2>
+            <p>Сколько случайных чисел (1-100) сгенерировать в массив?</p>
+            <input type="number" id="count" value="5" min="1" max="20">
+            <br>
+            <button onclick="generateRandom()">Генерировать</button>
+            <div id="randomResult" class="result">Ожидание команды...</div>
+        </div>
+        
+        <div class="example">
+            <h2>5. Разреженные массивы</h2>
+            <p>Демонстрация массивов с «дырками» в индексах.</p>
+            <button onclick="example5()">Анализировать массив</button>
+            <div id="result5" class="result">Ожидание команды...</div>
+        </div>
+    </div>
+
+    <script>
+        function example1() {
+            let fruits = ["яблоко", "банан", "апельсин", "груша"];
+            let numbers = [10, 20, 30, 40, 50];
+            let mixed = [1, "текст", true, null, undefined];
+            
+            let output = "<strong>Массивы инициализированы:</strong><br>";
+            output += "Фрукты: " + fruits.join(", ") + "<br>";
+            output += "Числа: " + numbers.join(", ") + "<br>";
+            output += "Доступ: fruits[0] = " + fruits[0] + " | Длина: " + fruits.length;
+            
+            document.getElementById('result1').innerHTML = output;
+        }
+        
+        function example2() {
+            let colors = ["красный", "синий"];
+            let output = "<strong>Начало:</strong> [" + colors.join(", ") + "]<br>";
+            colors.push("зеленый", "желтый");
+            output += "<strong>Итог:</strong> [" + colors.join(", ") + "]<br>";
+            output += "<strong>Новая длина:</strong> " + colors.length;
+            document.getElementById('result2').innerHTML = output;
+        }
+        
+        function example3() {
+            let numbers = [5, 10, 15, 20, 25];
+            let output = "<strong>Лог перебора:</strong><br>";
+            let sum = 0;
+            for (let i = 0; i < numbers.length; i++) {
+                output += "• Индекс " + i + ": " + numbers[i] + "<br>";
+                sum += numbers[i];
+            }
+            output += "<br><strong>Сумма элементов:</strong> " + sum;
+            document.getElementById('result3').innerHTML = output;
+        }
+        
+        function generateRandom() {
+            let count = parseInt(document.getElementById('count').value);
+            let randomNumbers = [];
+            for (let i = 0; i < count; i++) {
+                randomNumbers.push(Math.floor(Math.random() * 100) + 1);
+            }
+            let max = Math.max(...randomNumbers);
+            let min = Math.min(...randomNumbers);
+            
+            let output = "<strong>Сгенерированный поток:</strong><br>" + randomNumbers.join(" | ") + "<br><br>";
+            output += "<strong>Статистика:</strong> Max: " + max + " / Min: " + min;
+            document.getElementById('randomResult').innerHTML = output;
+        }
+        
+        function example5() {
+            let sparse = [];
+            sparse[0] = "начало";
+            sparse[5] = "середина";
+            sparse[10] = "конец";
+            
+            let output = "<strong>Анализ разреженности:</strong><br>";
+            output += "Индексы: 0, 5, 10 заданы.<br>";
+            output += "Длина (length): " + sparse.length + "<br><br>";
+            output += "<strong>Существующие данные:</strong><br>";
+            for (let i = 0; i < sparse.length; i++) {
+                if (sparse[i] !== undefined) output += "[" + i + "]: " + sparse[i] + "<br>";
+            }
+            document.getElementById('result5').innerHTML = output;
+        }
+    </script>
+</body>
+</html>
